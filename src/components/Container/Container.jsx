@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import style from './Container.module.css'
 
 export const Container = ({title, children})=>{
@@ -8,7 +7,3 @@ export const Container = ({title, children})=>{
     </div>
   )
 }
-
-// Container.propTypes = {
-//   title: PropTypes.string.isRequired,
-// }

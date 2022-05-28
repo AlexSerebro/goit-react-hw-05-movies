@@ -1,12 +1,15 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import  {Container}  from './Container';
+import  {Layout}  from './Layout';
 
 export const App = () => {
   return (
-    <Container>
-      React homework template
-    </Container>
+    <Routes>
+      <Route path="/" element={<Layout/>}></Route>
+    </Routes>
+    // <Layout>
+    //   React homework template
+    // </Layout>
   );
 };

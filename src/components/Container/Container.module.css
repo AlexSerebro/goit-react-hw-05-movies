@@ -1,0 +1,13 @@
+.container{
+  display: block;
+  max-width: 800px;
+  min-width: 500px;
+  justify-content: center;
+
+}
+
+.title{
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 30px;
+}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export function MovieSearchForm() {
-  const [input, setInput] = setState('');
+  const [input, setInput] = useState('');
 
   let navigate = useNavigate();
   let location = useLocation();

@@ -7,7 +7,11 @@
   font-size: 18px;
 }
 
-.activeLink {
-  composes: link;
+.active {
+
   color: #2196f3;
+}
+
+.link:hover{
+      color: #2196f3;
 }

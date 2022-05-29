@@ -5,11 +5,9 @@ import  {Layout}  from './Layout';
 
 export const App = () => {
   return (
-    // <Routes>
-    //   <Route path="/" element={<Layout />}></Route>
-    // </Routes>
-    <Layout>
-      React homework template
-    </Layout>
+    <Routes>
+      <Route path="/" element={<Layout />}></Route>
+    </Routes>
+
   );
 };

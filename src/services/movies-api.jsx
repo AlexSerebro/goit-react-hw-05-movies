@@ -1,39 +1,51 @@
-const BASE_URL = 'https://api.themoviedb.org/3/';
-const API_KEY = '0bb2f17198bc606087f9a8f8273748b1';
+import axios from 'axios';
 
-async function fetchWithErrorHandling(url = '', config = {}) {
-  const responce = await fetch(url, config);
-  return responce.ok
-    ? await responce.json()
-    : Promise.reject(new Error('Not found'));
-};
+const movieDbApi = axios.create({
+  baseURL: 'https://api.themoviedb.org/3/',
+  params: {
+    api_key: '0bb2f17198bc606087f9a8f8273748b1',
+  },
+});
 
-export function fetchTrendMovies() {
-  return fetchWithErrorHandling(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`)
+export async function fetchTrendMovies(page) {
+  const params = {
+    page,
+  };
+
+  const respons = await movieDbApi.get(`/trending/movie/day`, { params });
+
+  return respons.data.results;
 }
 
-export function fetchSearchMovies(query) {
-  if (!query.trim()) {
-    return
+export async function fetchMovieById(movieId) {
+  const respons = await movieDbApi.get(`/movie/${movieId}`);
+
+  return respons.data;
+}
+
+export async function fetchMovieByQuery(query) {
+  if (!query) {
+    return;
   }
-  const searchParams = new URLSearchParams({
-      api_key: "0bb2f17198bc606087f9a8f8273748b1",
-      query: query,
-      language: "en-US",
-      include_adult: false,
-    });
-  return fetchWithErrorHandling(`${BASE_URL}/search/movie?${searchParams}`)
+
+  const params = {
+    query,
+  };
+
+  const respons = await movieDbApi.get('search/movie', { params });
+
+  return respons.data.results;
 }
 
-export function fetchReviewsMovies(id) {
-  return fetchWithErrorHandling(`${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}`)
+export async function fetchMovieCast(movieId) {
+  const respons = await movieDbApi(`/movie/${movieId}/credits`);
+
+  return respons.data;
 }
 
-export function fetchCastMovies(id) {
-  return fetchWithErrorHandling(`${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`)
-}
+export async function fetchMovieRewiews(movieId) {
+  const respons = await movieDbApi(`/movie/${movieId}/reviews`);
 
-export function fetchDetailMovie(id) {
-  return fetchWithErrorHandling(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+  return respons.data.results;
 }
 

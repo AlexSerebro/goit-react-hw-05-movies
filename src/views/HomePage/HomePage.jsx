@@ -1,31 +1,23 @@
 import { useState, useEffect } from "react"; 
-import { Link, useRouteMatch } from "react-router-dom";
 import { fetchTrendMovies } from '../../services/movies-api'
 import { PageHeading } from "components/PageHeding/PageHading";
+import MoviesList from "components/MoviesList/MoviesList";
+
+
 
 export function HomePage() {
-  const { url } = useRouteMatch();
-  const [movies, setMovie] = useState(null);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetchTrendMovies().then(setMovie);
-  }, [])
-
+    fetchTrendMovies(1)
+      .then(r => setMovies(r))
+      .catch(r => console.log(r));
+  }, []);
   return (
     <>
       <PageHeading text='Treading today' />
       
-      {movies && (
-        <ul>
-          {movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`${url}/movies/${movie.id}`}>
-              {movie.original_title || movie.original_name}
-            </Link>
-          </li>
-          ))}
-        </ul>
-      )}
+      <MoviesList movies={movies}/>
     </>
   )
 }

@@ -20,7 +20,7 @@ export function MovieSearchForm() {
 
   return (
     <form onSubmit={submitForm}>
-      <input type='text' name='query' onCange={onInput} value={input}></input>
+      <input type='text' name='query' onChange={onInput} value={input}></input>
       <button className="btn" type='submit'>Search movie</button>
     </form>
   )

@@ -7,6 +7,9 @@ import { MovieSearchForm } from "components/SearchMovie/SearchMovie";
 export function MoviesPage() {
   const [movies, setMovies] = useState(null)
 
+  let location = useLocation();
+  console.log(location);
+
   return (
     <>
     <MovieSearchForm/>

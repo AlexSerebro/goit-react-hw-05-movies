@@ -7,6 +7,7 @@ import { MoviesPage } from 'views/MoviesPage';
 
 export const App = () => {
   return (
+    <Suspense fallback={<p>Loading</p>}>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />}></Route>
@@ -19,7 +20,8 @@ export const App = () => {
           <Route path="*" element={<HomePage />} /> */}
   
 
-    </Routes>
+      </Routes>
+      </Suspense>
 
   );
 };

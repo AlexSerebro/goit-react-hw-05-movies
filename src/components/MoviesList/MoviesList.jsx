@@ -4,7 +4,7 @@ import s from './MoviesList.module.css';
 
 export default function MoviesList({ movies }) {
   let location = useLocation();
-  console.log(movies);
+  // console.log(movies);
   return (
     <ul className={s.list}>
       {movies.map(movie => {

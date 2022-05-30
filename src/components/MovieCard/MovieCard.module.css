@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.poster {
+.movieCard__poster {
   margin-right: 30px;
   width: 300px;
 }

@@ -1,1 +1,0 @@
-export {PageHading} from './PageHading'
